@@ -1,10 +1,13 @@
 # Interview Answers
+
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. These will not be counted as a part of your sprint score but will be helpful for preparing you for your endorsement interview, and enhancing overall understanding.
 
 1. What problem does the context API help solve?
+   Context API helps bridge the gap between a robust global state management system like Redux and a quicker but dirtier approach like prop-drilling. Context allows us to access global state with extreme ease from each of the components but does not give us the predictability and reliability that Redux gives us, however it is an easier system to implement than Redux.
 
-2. In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+2. In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application? Actions work as messengers within the Redux system, they are tasked with describing what the information travelling through the system actually is. The reducers role is two-fold, it relies on the previous (or current) state and the action. Afterwards, the reducer interprets the action and executes a set of instructions depending on this interpretation and performs (or doesnt) a modification on the state, then it returns this new state as a new state object, respecting immutability. Finally the new state object is passed to the store, or the ultimate source of truth, where the previous state was being held and thus updates the new store to represent the new state. At this point React kicks in and is able to detect the deltas between the virtual DOM and the real DOM, re-rendering the necessary nodes that changed in the store.
 
 3. What does `redux-thunk` allow us to do? How does it change our `action-creators`?
-
+   Redux thunk allows us to perform async operations in the Redux flow. It changes our action creators by turning them into thunk functions (functions that are returned from another function). Redux-thunk is a middleware that detects when an action-creator is a thunk function (which takes in the dispatach function as a parameter) and executes the code asynchronously.
 4. What is your favorite state management system you've learned and this sprint? Please explain why!
+   I love the scalability, predictability, and reliability of Redux. It is so far, in my opinion the best way to visualize data moving through an application. The flexibility to apply middleware such as logger & thunk, or localStorage store is amazing. It is order & logic exemplified in a front-end state management system.
